@@ -1,0 +1,293 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* СТИЛІ ДО ШАПКИ */
+
+.site-header {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  justify-content: flex-start;
+  position: fixed; /* Закріплюємо шапку на верхній частині вікна */
+  width: 100%;
+  z-index: 9999; /* Забезпечуємо, що шапка буде завжди над вмістом */
+}
+
+.log {
+  display: flex;
+  align-items: center;
+}
+
+.log img {
+  width: 90px;
+  height: auto;
+}
+
+.log a {
+  color: #fff;
+}
+
+.log h3 {
+  margin-left: 0px;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(250, 250, 249);
+}
+
+.search-bar {
+  flex-grow: 1;
+  margin: 0px auto;
+  margin-left: 15%;
+}
+
+.search-bar input[type="text"] {
+  width: 500px;
+  height: 30px;
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  float: left;
+}
+
+.search-bar button[type="submit"] {
+  padding: 12px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Адаптивні стилі для пристроїв з меншими екранами */
+
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    height: auto;
+  }
+
+  .log {
+    margin-bottom: 10px;
+  }
+
+  .search-bar {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .search-bar input[type="text"] {
+    width: 100%;
+  }
+}
+
+
+
+/*  СТИЛІ ДО САЙДБАРУ */
+
+.content_container {
+
+  
+  /* display: grid;
+  grid-template-columns: 20%; */
+   
+  
+}
+
+
+.sid_grid {
+  position: fixed; /* Закріплюємо сайдбар на лівій частині вікна */
+  width: 250px;
+  height: 100%;
+  background-color: black;
+  z-index: 9999; /* Забезпечуємо, що сайдбар буде завжди над вмістом */
+  overflow-y: auto; /* Дозволяємо вертикальну прокрутку в сайдбарі, якщо його вміст перевищує висоту */
+  top: 80px; /* Задаємо відступ зверху, щоб уникнути перекриття шапки */
+  left: 0; /* Закріплюємо сайдбар зліва */
+}
+
+.sidebar {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  width: 30%;
+  height: 60px;
+  border-radius: 50%;
+  max-height: 40px;
+  margin-left: 70px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 1  .2); /* Додайте тінь для створення ефекту опуклості */
+}
+
+.image-button:hover {
+  background-color: lightgray; /* Змініть колір на світліший, як вам потрібно */
+  border-radius: 25%;
+  height: 70px;
+}
+
+.image-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+  width: 200px; /* Задаємо фіксовану ширину для кожної кнопки */
+  height: 80px;
+}
+
+.image-button img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px; /* Задаємо відступ між зображенням і текстом */
+}
+
+.image-button span {
+  margin-top: 5px;
+  overflow: hidden; /* Обмежуємо розмір тексту відносно батьківського елементу */
+  text-overflow: ellipsis; /* Відображаємо трохи тексту, якщо він перевищує обмежену ширину */
+  white-space: nowrap; /* Запобігаємо переносу тексту на новий рядок */
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar a:hover {
+  opacity: 0.8;
+}
+
+.sidebar p {
+  color: white;
+  margin: 0;
+  padding: 5px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  СТИЛІ ДО ВІДЕО */
+
+.vstavka {
+
+  position: absolute;
+  top: 90px; /* Встановіть бажане значення відступу від верхньої частини сторінки або шапки */
+  left: 270px; /* Встановіть бажане значення відступу від лівого краю сторінки або сайдбару */
+  right: 25px; /* Встановіть бажане значення відступу від правого краю сторінки */
+  margin-top: 0px; /* Встановіть бажане значення відступу від верхнього краю вікна або шапки */
+
+
+
+
+
+}
+
+
+.container {
+
+    position: absolute;
+    top: 80px; /* Встановіть бажане значення відступу від верхньої частини сторінки або шапки */
+    left: 270px; /* Встановіть бажане значення відступу від лівого краю сторінки або сайдбару */
+    right: 25px; /* Встановіть бажане значення відступу від правого краю сторінки */
+    margin-top: 40px; /* Встановіть бажане значення відступу від верхнього краю вікна або шапки */
+  
+  
+ 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  
+}
+
+.video {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  height: auto ;/* Змініть висоту за потребою */
+  overflow: hidden; 
+  border: 1px solid black;
+  text-overflow: ellipsis; 
+  
+}
+
+.opis {
+  height: 100px; 
+  background-color: #f2f2f2;
+}
+.opis-text {
+  height: 50px;
+  max-height: 30px;
+  overflow: hidden;
+  
+    width: 200px; /* ширина контейнера, в якому буде згортатися текст */
+    white-space: nowrap; /* заборонити перенос тексту на новий рядок */
+    overflow: hidden; /* приховати текст, що виходить за межі контейнера */
+    text-overflow: ellipsis; /* додати маркер "..." для позначення обрізаного тексту */
+  }
+  
+
+
+.video h3 {
+  margin-top: 10px;
+  margin-left: 5px;
+  font-family: Helvetica;
+  width: 320px; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}  
+
+.video p {
+  margin-left: 5px;
+  font-family: Open Sans;
+  width: 310px; 
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  
+  
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Зберігає співвідношення сторін 16:9 для відео */
+  overflow: hidden; /* Додаємо перекриття, щоб уникнути виходу тексту за межі */
+}
+
+.video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Змінюємо розмір відео, щоб воно повністю заповнило обгортку */
+}
+
+
+
+
