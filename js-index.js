@@ -87,7 +87,7 @@ function register() {
   if (klient.length > 0) {
     const nameUserElement = document.getElementById('Name-user');
     nameUserElement.classList.remove('hidden');
-    nameUserElement.querySelector('p').textContent = `Ім'я: ${klient[klient.length - 1].firstName}, Прізвище: ${klient[klient.length - 1].lastName}`;
+    nameUserElement.querySelector('h3').textContent = `Ім'я: ${klient[klient.length - 1].firstName}, Прізвище: ${klient[klient.length - 1].lastName}`;
 
   }
 
