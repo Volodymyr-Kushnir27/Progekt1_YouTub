@@ -21,7 +21,7 @@ function register() {
   // Функція для перевірки введеного номера телефону
   function validatePhoneNumber(phone) {
     phone.value = phone.value.replace(/\D/g, '');
-    phone.value = phone.value.slice(0, 9);
+    phone.value = phone.value.slice(0, 9);  
   }
 
   const phoneNumberInput = document.getElementById('phoneNumber');
@@ -78,6 +78,10 @@ function register() {
 
   // Виведення інформації про реєстрацію в консоль
   console.log('Зареєстрований клієнт:', newKlient);
+
+   // Вставлення інформації в елемент з id="Name-user"
+   const nameUserElement = document.getElementById('Name-user');
+  nameUserElement.textContent = `Ім'я: ${newKlient.firstName}, Прізвище: ${newKlient.lastName}`;
 
   // Очищення полів форми
   document.getElementById('firstName').value = '';
