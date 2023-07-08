@@ -84,12 +84,12 @@ function register() {
   document.getElementById('email').value = '';
 
 
-
-  window.location.href = "https://volodymyr-kushnir27.github.io/Progekt1_YouTub/";
+  const queryString = `?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
+  window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html${queryString}`;
+//   window.location.href = "https://volodymyr-kushnir27.github.io/Progekt1_YouTub/";
 
 }
-const queryString = `?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
-window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html${queryString}`;
+
 
    // Вставлення інформації в елемент з id="Name-user"
    const nameUserElement = document.getElementById('Name-user');
