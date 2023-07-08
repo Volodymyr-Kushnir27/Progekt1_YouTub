@@ -1,12 +1,6 @@
 
 
 
-// - user comand window - //
-document.getElementById('top-menu-user-btn').addEventListener('click', function() {
-    var menu = document.getElementById('top-menu-user');
-    menu.classList.toggle('visible');
-  });
-  
 
 // Масив для зберігання даних реєстрації
 const klient = [];
@@ -81,9 +75,7 @@ function register() {
   // Виведення інформації про реєстрацію в консоль
   console.log('Зареєстрований клієнт:', newKlient);
 
-   // Вставлення інформації в елемент з id="Name-user"
-   const nameUserElement = document.getElementById('Name-user');
-  nameUserElement.textContent = `Ім'я: ${newKlient.firstName}, Прізвище: ${newKlient.lastName}`;
+
 
   // Очищення полів форми
   document.getElementById('firstName').value = '';
@@ -91,6 +83,14 @@ function register() {
   document.getElementById('phoneNumber').value = '';
   document.getElementById('email').value = '';
 
+
+
   window.location.href = "https://volodymyr-kushnir27.github.io/Progekt1_YouTub/";
 
 }
+const queryString = `?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
+window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html${queryString}`;
+
+   // Вставлення інформації в елемент з id="Name-user"
+   const nameUserElement = document.getElementById('Name-user');
+  nameUserElement.textContent = `Ім'я: ${newKlient.firstName}, Прізвище: ${newKlient.lastName}`;

@@ -36,7 +36,7 @@
               </div>
               <div class="top-menu__list hidden" id="top-menu-user">
                 <div id="Name-user" class="top-menu__list-item">
-                  
+              <p>  </p>
                 </div>
                 <div class="top-menu__list-item">
                   <a href="reest.html">
@@ -53,6 +53,18 @@
               </div>
             </div>
           </div>
+
+      <script>  
+
+       const urlParams = new URLSearchParams(window.location.search);
+        const firstName = urlParams.get('firstName');
+        const lastName = urlParams.get('lastName');
+        const klient = {
+          firstName: firstName,
+          lastName: lastName
+        }
+            
+          </script>
       
       
 
@@ -214,7 +226,7 @@
 
   
 
-
+      <script src="js-reestr.js"></script>
       <script src="js-index.js"></script>
   </body>
 </html>
