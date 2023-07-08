@@ -1,8 +1,5 @@
 
 
-
-
-// Масив для зберігання даних реєстрації
 const klient = {};
 
 // Функція для обробки події натиснення кнопки "Зареєструватися"
@@ -69,13 +66,11 @@ function register() {
     email: emailString
   };
 
-  // Додавання об'єкта до масиву klient
- Object.assign(klient, {newKlient});
+  // Додавання об'єкта до об'єкта klient
+  klient.newKlient = newKlient;
 
   // Виведення інформації про реєстрацію в консоль
   console.log('Зареєстрований клієнт:', newKlient);
-
-
 
   // Очищення полів форми
   document.getElementById('firstName').value = '';
@@ -83,19 +78,13 @@ function register() {
   document.getElementById('phoneNumber').value = '';
   document.getElementById('email').value = '';
 
-
-
-  if (klient.length > 0) {
+  if (Object.keys(klient).length > 0) {
     const nameUserElement = document.getElementById('Name-user');
     nameUserElement.classList.remove('hidden');
-    nameUserElement.querySelector('h3').textContent = `Ім'я: ${klient[klient.length - 1].firstName}, Прізвище: ${klient[klient.length - 1].lastName}`;
+    nameUserElement.querySelector('h3').textContent = `Ім'я: ${klient.newKlient.firstName}, Прізвище: ${klient.newKlient.lastName}`;
 
     const queryString = `?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
-     window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html${queryString}`;
+    window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html${queryString}`;
   }
-  
-  
-
 }
-
 
