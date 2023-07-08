@@ -11,7 +11,8 @@ body {
   background-color: #000;
   color: #fff;
   padding: 20px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
   align-items: center;
   height: 80px;
   justify-content: flex-start;
@@ -35,25 +36,24 @@ body {
 }
 
 .log h3 {
-  margin-left: 0px;
+  margin-left: 10px;
   font-size: 24px;
   font-weight: bold;
-  color: rgb(250, 250, 249);
 }
 
 .search-bar {
   flex-grow: 1;
-  margin: 0px auto;
-  margin-left: 15%;
+  margin-left: 10%;
 }
 
 .search-bar input[type="text"] {
-  width: 500px;
+  width: 60%;
   height: 30px;
   padding: 5px;
   font-size: 16px;
   border: none;
   float: left;
+  margin-left: 120px;
 }
 
 .search-bar button[type="submit"] {
@@ -63,6 +63,86 @@ body {
   border: none;
   cursor: pointer;
 }
+
+.site-user {
+  position: relative;
+  display: inline-block;
+}
+
+.top-menu__button-image {
+  max-width: 40%;
+  max-height: 50%;
+  margin-left: 65px;
+}
+
+.top-menu__list {
+  position: absolute;
+  top: calc(100% + 8px);
+
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  width: 340px;
+  height: auto;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  overflow: auto;
+  max-height: 200px;
+  font-family: "Times New Roman", serif;
+  font-size: 16px;
+  white-space: nowrap;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.top-menu__list-item {
+  margin-bottom: 10px;
+}
+
+.top-menu__list-item button {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.top-menu__list-item button span {
+  white-space: nowrap;
+}
+
+.top-menu__list-item:hover {
+  background-color: rgba(255, 7, 7, 0.1);
+}
+
+.top-menu__list.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.top-menu__list-item:hover button span {
+  background-color: rgba(255, 255, 255, 0.1); /* Змінити колір підсвічування тексту */
+}
+
+
+
+@media (max-width: 100vw) {
+  .top-menu__list {
+    left: calc(50% - 95px); /* Змінити розташування, якщо вікно виходить за межі сторінки */
+  }
+}
+
+
+
+
+
+
 
 /* Адаптивні стилі для пристроїв з меншими екранами */
 
@@ -92,16 +172,6 @@ body {
 
 /*  СТИЛІ ДО САЙДБАРУ */
 
-.content_container {
-
-  
-  /* display: grid;
-  grid-template-columns: 20%; */
-   
-  
-}
-
-
 .sid_grid {
   position: fixed; /* Закріплюємо сайдбар на лівій частині вікна */
   width: 250px;
@@ -109,8 +179,9 @@ body {
   background-color: black;
   z-index: 9999; /* Забезпечуємо, що сайдбар буде завжди над вмістом */
   overflow-y: auto; /* Дозволяємо вертикальну прокрутку в сайдбарі, якщо його вміст перевищує висоту */
-  top: 80px; /* Задаємо відступ зверху, щоб уникнути перекриття шапки */
+  top: 90px; /* Задаємо відступ зверху, щоб уникнути перекриття шапки */
   left: 0; /* Закріплюємо сайдбар зліва */
+  margin-top: 5px;
 }
 
 .sidebar {
