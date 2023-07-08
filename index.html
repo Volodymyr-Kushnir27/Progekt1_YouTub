@@ -217,5 +217,18 @@
 
       <script src="js-reestr.js"></script>
       <script src="js-index.js"></script>
+      <script>
+        // Отримати параметри firstName та lastName з URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const firstName = urlParams.get('firstName');
+        const lastName = urlParams.get('lastName');
+  
+        // Перевірка чи є firstName та lastName у URL
+        if (firstName && lastName) {
+          const nameUserElement = document.getElementById('Name-user');
+          nameUserElement.classList.remove('hidden');
+          nameUserElement.querySelector('h3').textContent = `Ім'я: ${firstName}, Прізвище: ${lastName}`;
+        }
+      </script>
   </body>
 </html>
