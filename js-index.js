@@ -3,7 +3,7 @@
 
 
 // Масив для зберігання даних реєстрації
-const klient = [];
+const klient = {};
 
 // Функція для обробки події натиснення кнопки "Зареєструватися"
 function register() {
@@ -70,7 +70,7 @@ function register() {
   };
 
   // Додавання об'єкта до масиву klient
-  klient.push(newKlient);
+ Object.assign(klient, {newKlient});
 
   // Виведення інформації про реєстрацію в консоль
   console.log('Зареєстрований клієнт:', newKlient);
