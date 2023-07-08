@@ -83,10 +83,15 @@ function register() {
   document.getElementById('phoneNumber').value = '';
   document.getElementById('email').value = '';
 
+
   if (klient.length > 0) {
     const nameUserElement = document.getElementById('Name-user');
-    nameUserElement.classList.remove('user.name');
+    nameUserElement.classList.remove('hidden');
+    nameUserElement.textContent = `Ім'я: ${klient[klient.length - 1].firstName}, Прізвище: ${klient[klient.length - 1].lastName}`;
   }
+
+
+
 
 
   const queryString = `?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
@@ -96,6 +101,3 @@ function register() {
 }
 
 
-   // Вставлення інформації в елемент з id="Name-user"
-   const nameUserElement = document.getElementById('Name-user');
-  nameUserElement.textContent = `Ім'я: ${klient.firstName}, Прізвище: ${klient.lastName}`;
