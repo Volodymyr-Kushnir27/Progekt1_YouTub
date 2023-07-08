@@ -84,19 +84,16 @@ function register() {
   document.getElementById('email').value = '';
 
 
+
   if (klient.length > 0) {
     const nameUserElement = document.getElementById('Name-user');
     nameUserElement.classList.remove('hidden');
     nameUserElement.querySelector('h3').textContent = `Ім'я: ${klient[klient.length - 1].firstName}, Прізвище: ${klient[klient.length - 1].lastName}`;
 
+    const queryString = `?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
+     window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html${queryString}`;
   }
-
-
-
-
-
-  const queryString = `?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
-  window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html${queryString}`;
+  
   
 
 }
