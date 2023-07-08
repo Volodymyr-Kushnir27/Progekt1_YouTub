@@ -103,6 +103,13 @@ body {
   margin-bottom: 10px;
 }
 
+.user {
+
+  display: none;
+
+
+}
+
 .top-menu__list-item button {
   width: 100%;
   background-color: #000;

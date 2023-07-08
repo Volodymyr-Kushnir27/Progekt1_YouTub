@@ -83,14 +83,19 @@ function register() {
   document.getElementById('phoneNumber').value = '';
   document.getElementById('email').value = '';
 
+  if (klient.length > 0) {
+    const nameUserElement = document.getElementById('Name-user');
+    nameUserElement.classList.remove('user.name');
+  }
+
 
   const queryString = `?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
   window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html${queryString}`;
-//   window.location.href = "https://volodymyr-kushnir27.github.io/Progekt1_YouTub/";
+  
 
 }
 
 
    // Вставлення інформації в елемент з id="Name-user"
    const nameUserElement = document.getElementById('Name-user');
-  nameUserElement.textContent = `Ім'я: ${newKlient.firstName}, Прізвище: ${newKlient.lastName}`;
+  nameUserElement.textContent = `Ім'я: ${klient.firstName}, Прізвище: ${klient.lastName}`;
