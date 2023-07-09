@@ -106,8 +106,15 @@ body {
 .user {
 
   display: none;
+  height: 25 px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
 
-
+.user h3 {
+  font-weight: bold;
+   font-size: 20px;
+   font-family: 'Times New Roman'
 }
 
 .top-menu__list-item button {
