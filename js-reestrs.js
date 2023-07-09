@@ -22,21 +22,31 @@ function register() {
   }
 
   // Створення об'єкта з даними реєстрації
-  const registrationData = {
+  // const registrationData = {
+  //   firstName,
+  //   lastName,
+  //   phoneNumber,
+  //   email
+  // };
+
+  const nameData = {
     firstName,
-    lastName,
-    phoneNumber,
-    email
+    lastName
   };
 
-  console.log( registrationData) ;
+  console.log( nameData) ;
   // Перетворення об'єкту у JSON-рядок
-  const jsonData = JSON.stringify(registrationData);
+  // const jsonData = JSON.stringify(registrationData);
+
+  const nameJsonData = JSON.stringify(nameData);
+  // Перехід на іншу сторінку з передачею даних через URL-параметр (тільки ім'я та прізвище)
+  if (firstName && lastName) {
+    window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/page.html?data=${encodeURIComponent(nameJsonData)}`;
 
   // Перехід на іншу сторінку з передачею даних через URL-параметр
-  if (phoneNumber && email) {
-    window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html=${encodeURIComponent(jsonData)}`;
-  }
+  // if (phoneNumber && email) {
+  //   window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html=${encodeURIComponent(jsonData)}`;
+  // }
 }
 
 // Обмеження введення символів в поле номеру телефону
