@@ -5,21 +5,24 @@ document.getElementById('top-menu-user-btn').addEventListener('click', function(
   });
 
 
-  // Створення нового елементу для відображення даних клієнта
-  const clientDataElement = document.createElement('div');
-  clientDataElement.innerHTML = `
-    <p>Ім'я: ${klient.newKlient.firstName}</p>
-    <p>Прізвище: ${klient.newKlient.lastName}</p>
-    <p>Номер телефону: ${klient.newKlient.phoneNumber}</p>
-    <p>Email: ${klient.newKlient.email}</p>
-  `;
 
-  // Додавання елементу з даними клієнта до DOM-дерева сторінки
-  const clientDataContainer = document.getElementById('clientDataContainer');
-  clientDataContainer.appendChild(clientDataElement);
 
-  console.log(clientDataElement) ;
-       
-  console.log(clientDataElement) ;
- 
+// Отримання URL-параметра з даними
+const urlParams = new URLSearchParams(window.location.search);
+const jsonDataParam = urlParams.get('data');
 
+// Перевірка наявності даних у URL-параметрі
+if (jsonDataParam) {
+  // Розпакування JSON-рядка в об'єкт
+  const registrationData = JSON.parse(decodeURIComponent(jsonDataParam));
+
+  // Отримання значень полів з об'єкта
+  const firstName = registrationData.firstName;
+  const lastName = registrationData.lastName;
+  const phoneNumber = registrationData.phoneNumber;
+  const email = registrationData.email;
+
+  // Використання отриманих даних
+  // Наприклад, встановлення значень полів на сторінці або виведення їх у консоль
+  console.log(firstName, lastName, phoneNumber, email);
+}

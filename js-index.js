@@ -1,108 +1,53 @@
-
-const klient = {};
-
-// Функція для перевірки введеного номера телефону
-function validatePhoneNumber(phone) {
-  phone.value = phone.value.replace(/\D/g, '');
-  phone.value = phone.value.slice(0, 9);  
-}
-
-// Функція для обробки події натиснення кнопки "Зареєструватися"
 function register() {
+  // Отримання значень полів форми
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
-  let phoneNumber = document.getElementById('phoneNumber').value;
-  let emailString = document.getElementById('email').value;
+  const phoneNumber = document.getElementById('phoneNumber').value;
+  const email = document.getElementById('email').value;
 
-  const phoneNumberInput = document.getElementById('phoneNumber');
-  phoneNumberInput.addEventListener('input', function() {
-    validatePhoneNumber(phoneNumberInput);
-    if (!/^\d{9}$/.test(phoneNumberInput.value)) {
-      nofon.textContent = 'Не правильний формат вводу';
-      nofon.style.display = 'block';
-    } else {
-      nofon.style.display = 'none';
-    }
-  });
-
-  validatePhoneNumber(phoneNumberInput);
-  phoneNumber = '+380' + phoneNumber;
-
-  if (!/^\d{9}$/.test(phoneNumberInput.value)) {
-    // Неправильний формат вводу номера телефону
-    nofon.textContent = 'Не правильний формат вводу';
-    nofon.style.display = 'block';
-    phoneNumberInput.value = phoneNumberInput.value.replace(/\D/g, '');
-    return; // Зупинка виконання функції, якщо номер телефону неправильний
-  } else {
-    nofon.style.display = 'none';
+  // Перевірка правильності номеру телефону
+  const phoneRegex = /^\d{9}$/;
+  if (!phoneRegex.test(phoneNumber)) {
+    document.getElementById('nofon').textContent = 'Введіть коректний номер телефону (9 цифр)!';
+    document.getElementById('nofon').style.display = 'block';
+    return;
   }
 
-  // Перевірка email
-  function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  // Перевірка правильності електронної пошти
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    document.getElementById('noemail').textContent = 'Введіть коректну електронну пошту!';
+    document.getElementById('noemail').style.display = 'block';
+    return;
   }
 
-  const emailInput = document.getElementById('email');
-  if (!validateEmail(emailString)) {
-    // Неправильний формат вводу email
-    noemail.textContent = 'Неправильний формат вводу email';
-    noemail.style.display = 'block';
-    emailInput.value = '';
-    return; // Зупинка виконання функції, якщо email неправильний
-  } else {
-    noemail.style.display = 'none';
-  }
-
-  // Створення об'єкта з введеними даними
-  const newKlient = {
-    firstName: firstName,
-    lastName: lastName,
-    phoneNumber: phoneNumber,
-    email: emailString
+  // Створення об'єкта з даними реєстрації
+  const registrationData = {
+    firstName,
+    lastName,
+    phoneNumber,
+    email
   };
 
-  // Додавання об'єкта до об'єкта klient
-  klient.newKlient = newKlient;
+  console.log( registrationData) ;
+  // Перетворення об'єкту у JSON-рядок
+  const jsonData = JSON.stringify(registrationData);
 
-  // Виведення інформації про реєстрацію в консоль
-  console.log('Зареєстрований клієнт:', newKlient);
-
-  // Очищення полів форми
-  document.getElementById('firstName').value = '';
-  document.getElementById('lastName').value = '';
-  document.getElementById('phoneNumber').value = '';
-  document.getElementById('email').value = '';
+  // Перехід на іншу сторінку з передачею даних через URL-параметр
+  if (phoneNumber && email) {
+    window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/=${encodeURIComponent(jsonData)}`;
+  }
 }
 
-// Прив'язка обробника події до введення номера телефону
+// Обмеження введення символів в поле номеру телефону
 const phoneNumberInput = document.getElementById('phoneNumber');
-phoneNumberInput.addEventListener('input', function() {
-  validatePhoneNumber(phoneNumberInput);
-
-
-  fetch('https://volodymyr-kushnir27.github.io/Progekt1_YouTub/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(klient)
-  })
-    .then(response => response.json())
-    .then(data => {
-      // Обробка відповіді від сервера
-      console.log('Відповідь сервера:', data);
-    })
-    .catch(error => {
-      // Обробка помилки
-      console.error('Сталася помилка:', error);
-    });
-
-    window.location.href = "https://volodymyr-kushnir27.github.io/Progekt1_YouTub/";
-
-
+phoneNumberInput.addEventListener('input', function(event) {
+  const input = event.target.value;
+  event.target.value = input.replace(/\D/g, '').slice(0, 9);
 });
 
 
-  
+
+
+
+

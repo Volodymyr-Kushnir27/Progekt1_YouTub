@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="styl1.css" />
   <title>Форма реєстрації</title>
+  
 </head>
 <body>
   <div class="forma" >
@@ -15,17 +16,17 @@
     <input type="text" id="lastName" required>
 
     <label for="phoneNumber">Номер телефону : +380-</label>
-    <input type="tel" id="phoneNumber" required><p id="nofon"  style="display: none;" > </p>
+    <input type="text" id="phoneNumber" required><p id="nofon" style="display: none;"></p>
+    
     
 
     <label for="email">Електронна пошта :</label>
     <input type="email" id="email" required><p id="noemail"  style="display: none;" > </p>
 
-    <input type="button" value="Зареєструватися" onclick="register()">
+    <input type="button"  id="registerButton" value="Зареєструватися" onclick="register()">
   </form>
 </div>  
 
-<script src="js-index.js"></script>
-
+<script src="js-index.js" ></script>
 </body>
 </html>
