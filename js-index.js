@@ -1,53 +1,28 @@
-function register() {
-  // Отримання значень полів форми
-  const firstName = document.getElementById('firstName').value;
-  const lastName = document.getElementById('lastName').value;
-  const phoneNumber = document.getElementById('phoneNumber').value;
-  const email = document.getElementById('email').value;
+// - user comand window - //
+document.getElementById('top-menu-user-btn').addEventListener('click', function() {
+    var menu = document.getElementById('top-menu-user');
+    menu.classList.toggle('visible');
+  });
 
-  // Перевірка правильності номеру телефону
-  const phoneRegex = /^\d{9}$/;
-  if (!phoneRegex.test(phoneNumber)) {
-    document.getElementById('nofon').textContent = 'Введіть коректний номер телефону (9 цифр)!';
-    document.getElementById('nofon').style.display = 'block';
-    return;
-  }
 
-  // Перевірка правильності електронної пошти
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    document.getElementById('noemail').textContent = 'Введіть коректну електронну пошту!';
-    document.getElementById('noemail').style.display = 'block';
-    return;
-  }
 
-  // Створення об'єкта з даними реєстрації
-  const registrationData = {
-    firstName,
-    lastName,
-    phoneNumber,
-    email
-  };
 
-  console.log( registrationData) ;
-  // Перетворення об'єкту у JSON-рядок
-  const jsonData = JSON.stringify(registrationData);
+// Отримання URL-параметра з даними
+const urlParams = new URLSearchParams(window.location.search);
+const jsonDataParam = urlParams.get('data');
 
-  // Перехід на іншу сторінку з передачею даних через URL-параметр
-  if (phoneNumber && email) {
-    window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/=${encodeURIComponent(jsonData)}`;
-  }
+// Перевірка наявності даних у URL-параметрі
+if (jsonDataParam) {
+  // Розпакування JSON-рядка в об'єкт
+  const registrationData = JSON.parse(decodeURIComponent(jsonDataParam));
+
+  // Отримання значень полів з об'єкта
+  const firstName = registrationData.firstName;
+  const lastName = registrationData.lastName;
+  const phoneNumber = registrationData.phoneNumber;
+  const email = registrationData.email;
+
+  // Використання отриманих даних
+  // Наприклад, встановлення значень полів на сторінці або виведення їх у консоль
+  console.log(firstName, lastName, phoneNumber, email);
 }
-
-// Обмеження введення символів в поле номеру телефону
-const phoneNumberInput = document.getElementById('phoneNumber');
-phoneNumberInput.addEventListener('input', function(event) {
-  const input = event.target.value;
-  event.target.value = input.replace(/\D/g, '').slice(0, 9);
-});
-
-
-
-
-
-
