@@ -9,33 +9,22 @@ document.getElementById('top-menu-user-btn').addEventListener('click', function(
 
 // Отримання URL-параметра з даними
 const urlParams = new URLSearchParams(window.location.search);
-// const jsonDataParam = urlParams.get('data');
+const jsonDataParam = urlParams.get('data');
 const nameDataParam = urlParams.get('nameData');
 
 // Перевірка наявності даних у URL-параметрі
-// if (jsonDataParam) {
-//   // Розпакування JSON-рядка в об'єкт
-//   const registrationData = JSON.parse(decodeURIComponent(jsonDataParam));
-
-//   // Отримання значень полів з об'єкта
-//   const firstName = registrationData.firstName;
-//   const lastName = registrationData.lastName;
-//   const phoneNumber = registrationData.phoneNumber;
-//   const email = registrationData.email;
-
-//   // Використання отриманих даних
-//   // Наприклад, встановлення значень полів на сторінці або виведення їх у консоль
-//   console.log(firstName, lastName, email, phoneNumber );
-// }
-
-if (nameDataParam) {
+if (jsonDataParam) {
   // Розпакування JSON-рядка в об'єкт
-  const nameData = JSON.parse(decodeURIComponent(nameDataParam));
+  const registrationData = JSON.parse(decodeURIComponent(jsonDataParam));
 
   // Отримання значень полів з об'єкта
-  const nameFirstName = nameData.firstName;
-  const nameLastName = nameData.lastName;
+  const firstName = registrationData.firstName;
+  const lastName = registrationData.lastName;
+  const phoneNumber = registrationData.phoneNumber;
+  const email = registrationData.email;
 
   // Використання отриманих даних
-  console.log(nameFirstName, nameLastName);
+  // Наприклад, встановлення значень полів на сторінці або виведення їх у консоль
+  console.log(firstName, lastName, email, phoneNumber );
 }
+

@@ -22,31 +22,19 @@ function register() {
   }
 
   // Створення об'єкта з даними реєстрації
-  // const registrationData = {
-  //   firstName,
-  //   lastName,
-  //   phoneNumber,
-  //   email
-  // };
-
-  const nameData = {
+  const registrationData = {
     firstName,
-    lastName
+    lastName,
+    phoneNumber,
+    email
   };
+  console.log(registrationData ) ;
 
-  console.log( nameData) ;
-  // Перетворення об'єкту у JSON-рядок
-  // const jsonData = JSON.stringify(registrationData);
-
-  const nameJsonData = JSON.stringify(nameData);
-  // Перехід на іншу сторінку з передачею даних через URL-параметр (тільки ім'я та прізвище)
-  if (firstName && lastName) {
-    window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/page.html?data=${encodeURIComponent(nameJsonData)}`;
-
+  const jsonData = JSON.stringify(registrationData);
   // Перехід на іншу сторінку з передачею даних через URL-параметр
-  // if (phoneNumber && email) {
-  //   window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html=${encodeURIComponent(jsonData)}`;
-  // }
+  if (phoneNumber && email) {
+    window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html=${encodeURIComponent(jsonData)}`;
+  }
 }
 
 // Обмеження введення символів в поле номеру телефону
@@ -55,7 +43,6 @@ phoneNumberInput.addEventListener('input', function(event) {
   const input = event.target.value;
   event.target.value = input.replace(/\D/g, '').slice(0, 9);
 });
-
 
 
 
