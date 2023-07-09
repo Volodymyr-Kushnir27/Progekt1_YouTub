@@ -33,7 +33,7 @@ function register() {
   const jsonData = JSON.stringify(registrationData);
   // Перехід на іншу сторінку з передачею даних через URL-параметр
   if (phoneNumber && email) {
-    window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html=${encodeURIComponent(jsonData)}`;
+    window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html?data=${encodeURIComponent(jsonData)}`;
   }
 }
 
