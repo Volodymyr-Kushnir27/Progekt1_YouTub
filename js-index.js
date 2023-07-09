@@ -1,6 +1,11 @@
 
-
 const klient = {};
+
+// Функція для перевірки введеного номера телефону
+function validatePhoneNumber(phone) {
+  phone.value = phone.value.replace(/\D/g, '');
+  phone.value = phone.value.slice(0, 9);  
+}
 
 // Функція для обробки події натиснення кнопки "Зареєструватися"
 function register() {
@@ -8,14 +13,6 @@ function register() {
   const lastName = document.getElementById('lastName').value;
   let phoneNumber = document.getElementById('phoneNumber').value;
   let emailString = document.getElementById('email').value;
-
-  // Перевірка номера телефону (як у вашому коді)
-
-  // Функція для перевірки введеного номера телефону
-  function validatePhoneNumber(phone) {
-    phone.value = phone.value.replace(/\D/g, '');
-    phone.value = phone.value.slice(0, 9);  
-  }
 
   const phoneNumberInput = document.getElementById('phoneNumber');
   phoneNumberInput.addEventListener('input', function() {
@@ -77,14 +74,35 @@ function register() {
   document.getElementById('lastName').value = '';
   document.getElementById('phoneNumber').value = '';
   document.getElementById('email').value = '';
-
-  if (Object.keys(klient).length > 0) {
-    const nameUserElement = document.getElementById('Name-user');
-    nameUserElement.classList.remove('hidden');
-    nameUserElement.querySelector('h3').textContent = `Ім'я: ${klient.newKlient.firstName}, Прізвище: ${klient.newKlient.lastName}`;
-
-    const queryString = `?firstName=${encodeURIComponent(firstName)}&lastName=${encodeURIComponent(lastName)}`;
-    window.location.href = `https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html${queryString}`;
-  }
 }
 
+// Прив'язка обробника події до введення номера телефону
+const phoneNumberInput = document.getElementById('phoneNumber');
+phoneNumberInput.addEventListener('input', function() {
+  validatePhoneNumber(phoneNumberInput);
+
+
+  fetch('https://volodymyr-kushnir27.github.io/Progekt1_YouTub/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(klient)
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Обробка відповіді від сервера
+      console.log('Відповідь сервера:', data);
+    })
+    .catch(error => {
+      // Обробка помилки
+      console.error('Сталася помилка:', error);
+    });
+
+    window.location.href = "https://volodymyr-kushnir27.github.io/Progekt1_YouTub/";
+
+
+});
+
+
+  

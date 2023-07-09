@@ -5,15 +5,21 @@ document.getElementById('top-menu-user-btn').addEventListener('click', function(
   });
 
 
+  // Створення нового елементу для відображення даних клієнта
+  const clientDataElement = document.createElement('div');
+  clientDataElement.innerHTML = `
+    <p>Ім'я: ${klient.newKlient.firstName}</p>
+    <p>Прізвище: ${klient.newKlient.lastName}</p>
+    <p>Номер телефону: ${klient.newKlient.phoneNumber}</p>
+    <p>Email: ${klient.newKlient.email}</p>
+  `;
 
+  // Додавання елементу з даними клієнта до DOM-дерева сторінки
+  const clientDataContainer = document.getElementById('clientDataContainer');
+  clientDataContainer.appendChild(clientDataElement);
 
-  const urlParams = new URLSearchParams(window.location.search);
-   const firstName = urlParams.get('firstName');
-   const lastName = urlParams.get('lastName');
-   const klien = {
-     firstName: firstName,
-     lastName: lastName
-   }
+  console.log(clientDataElement) ;
        
+  console.log(clientDataElement) ;
  
 
