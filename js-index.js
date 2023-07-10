@@ -31,21 +31,3 @@ if (jsonDataParam) {
   userElement.style.display = 'block';
 }
 
-
-if (jsonDataParam) {
-
-  const registrationData = JSON.parse(jsonDataParam);
-
-  const firstName = registrationData.firstName;
-  const lastName = registrationData.lastName;
-  const fphoneNumber = registrationData.phoneNumber;
-  const email = registrationData.email
-
-const nameUser = document.getElementById('name');
-nameUser.innerText = `${firstName}`;
-const surnameUser = document.getElementById('surname');
-surnameUser.innerText = `${lastName}`;
-const phoneUser = document.getElementById('phone');
-phoneUser.innerText = `${fphoneNumber}`;
-const emailsUser = document.getElementById('emails');
-emailsUser.innerText = `${email}`; };

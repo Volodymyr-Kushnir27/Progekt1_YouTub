@@ -23,21 +23,16 @@ function register() {
   // Створення об'єкта з даними реєстрації
   const registrationData = {
     firstName,
-    lastName, };
-  
-  const nameData = {
-    
-    firstName,
     lastName,
     phoneNumber,
-    email
-  };
+    email };
+  
+  
+
+  console.log( registrationData) ;
 
 
-  console.log(nameData) ;
-
-
-  localStorage.setItem('registrationData', JSON.stringify(nameData);
+  
   localStorage.setItem('registrationData', JSON.stringify(registrationData));
 
   // Перехід на іншу сторінку
