@@ -277,20 +277,6 @@ body {
 
 /*  СТИЛІ ДО ВІДЕО */
 
-.vstavka {
-
-  position: absolute;
-  top: 90px; /* Встановіть бажане значення відступу від верхньої частини сторінки або шапки */
-  left: 270px; /* Встановіть бажане значення відступу від лівого краю сторінки або сайдбару */
-  right: 25px; /* Встановіть бажане значення відступу від правого краю сторінки */
-  margin-top: 0px; /* Встановіть бажане значення відступу від верхнього краю вікна або шапки */
-
-
-
-
-
-}
-
 
 .container {
 
@@ -299,13 +285,9 @@ body {
     left: 270px; /* Встановіть бажане значення відступу від лівого краю сторінки або сайдбару */
     right: 25px; /* Встановіть бажане значення відступу від правого краю сторінки */
     margin-top: 40px; /* Встановіть бажане значення відступу від верхнього краю вікна або шапки */
-  
-  
- 
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;  
 }
 
 .video {
@@ -372,6 +354,56 @@ body {
   height: 100%;
   object-fit: cover; /* Змінюємо розмір відео, щоб воно повністю заповнило обгортку */
 }
+
+
+
+/*/// - Class for setting  - ///*/
+
+.container-setting {
+
+  position: absolute;
+  top: 80px; /* Встановіть бажане значення відступу від верхньої частини сторінки або шапки */
+  left: 255px; /* Встановіть бажане значення відступу від лівого краю сторінки або сайдбару */
+  right: 5px; /* Встановіть бажане значення відступу від правого краю сторінки */
+  margin-top: 60px; /* Встановіть бажане значення відступу від верхнього краю вікна або шапки */
+  max-width: 100%;
+  display: grid;
+  grid-template-rows: 250px 1200px;
+  gap: 20px; 
+}
+
+ .setting {
+  max-width: 100%;
+  top: 80px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 3fr ;
+  gap: 50px;
+}
+
+.user-setting {
+  margin-top: 20px;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;  
+
+}
+
+.image-user {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 2px solid black;
+  margin-top: 15px;
+}
+
+.image-user img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 
 
