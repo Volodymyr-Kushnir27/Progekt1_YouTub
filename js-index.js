@@ -4,6 +4,14 @@ document.getElementById('top-menu-user-btn').addEventListener('click', function(
     menu.classList.toggle('visible');
   });
 
+//-----Cleen storage ---//
+document.getElementById("button-cleener").addEventListener("click", function() {
+  // Очищення локального сховища
+  localStorage.clear();
+  
+  // Оновлення сторінки
+  location.reload();
+});
 
 
 
@@ -30,4 +38,34 @@ if (jsonDataParam) {
   const userElement = document.querySelector('.user');
   userElement.style.display = 'block';
 }
+
+// Отримуємо посилання на елементи DOM
+
+const fotUser = document.getElementById("fot-usr");
+
+// Оновлення зображення у контейнерах
+function updateImage(imageData) {
+  const image = new Image();
+  image.src = imageData;
+
+  image.onload = function() {
+    const width = image.width;
+    const height = image.height;
+
+    let newWidth = width;
+    let newHeight = height;  
+    }
+    fotUser.style.width = "100%";
+    fotUser.style.height = "100%";
+    fotUser.src = imageData;
+  };
+
+
+// Перевірка, чи існує збережена фотографія в локальному сховищі
+if (localStorage.getItem("userPhoto")) {
+  const savedImageData = localStorage.getItem("userPhoto");
+  updateImage(savedImageData);
+  
+}
+
 

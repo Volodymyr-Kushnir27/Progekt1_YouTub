@@ -73,6 +73,7 @@ body {
   max-width: 40%;
   max-height: 50%;
   margin-left: 65px;
+  border-radius: 100px; 
 }
 
 .top-menu__list {
@@ -142,6 +143,13 @@ body {
 
 .top-menu__list-item:hover button span {
   background-color: rgba(255, 255, 255, 0.1); /* Змінити колір підсвічування тексту */
+}
+
+.setting-button {
+
+  background-color: #100101;
+  color: #faf8f8;
+  
 }
 
 
@@ -359,34 +367,128 @@ body {
 
 /*/// - Class for setting  - ///*/
 
-.container-setting {
+/* .container-setting {
 
   position: absolute;
-  top: 80px; /* Встановіть бажане значення відступу від верхньої частини сторінки або шапки */
-  left: 255px; /* Встановіть бажане значення відступу від лівого краю сторінки або сайдбару */
-  right: 5px; /* Встановіть бажане значення відступу від правого краю сторінки */
-  margin-top: 60px; /* Встановіть бажане значення відступу від верхнього краю вікна або шапки */
+  top: 80px;  
+  left: 255px; 
+  right: 5px; 
+  margin-top: 60px; 
   max-width: 100%;
   display: grid;
-  grid-template-rows: 250px 1200px;
+  grid-template-rows: 350px 1200px;
   gap: 20px; 
 }
 
  .setting {
   max-width: 100%;
   top: 80px;
-  margin-top: 20px;
+  margin-top: 5px;
   display: grid;
-  grid-template-columns: 1fr 3fr ;
+  grid-template-columns: 1fr 3fr  ;
   gap: 50px;
 }
 
 .user-setting {
-  margin-top: 20px;
+ 
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  gap: 10px;  
+  grid-template-rows:   21% 21% 21% 21%  16% ;
+  gap: 5px;
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  overflow: auto;
+  padding: 5px;
+  grid-template-rows: repeat(auto-fit, minmax(0, 1fr)); 
+}
 
+#setting-button {
+    margin-top: 15px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.1); 
+    background-color: #f1f1f1;
+    border: none;
+    color: #000;
+    padding: 1px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px ;
+}
+
+#setting-button:hover {
+  background-color: #f7d669;
+}
+
+#setting-button:focus {
+  outline: none;
+}
+
+.image-user {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 2px solid black;
+  margin-top: 15px;
+} */
+
+.container-setting {
+  position: absolute;
+  top: 80px;
+  left: 255px;
+  right: 5px;
+  margin-top: 60px;
+  max-width: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+}
+
+.setting {
+  max-width: 100%;
+  margin-top: 5px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 50px;
+}
+
+.user-setting {
+  display: grid;
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  gap: 5px;
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  overflow: auto;
+  padding: 5px;
+}
+
+#setting-button {
+  margin-top: 15px;
+  height: 45px;
+  background-color: #f1f1f1;
+  border: none;
+  color: #000;
+  padding: 1px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#setting-button:hover {
+  background-color: #f7d669;
+}
+
+#setting-button:focus {
+  outline: none;
 }
 
 .image-user {
@@ -398,11 +500,27 @@ body {
   margin-top: 15px;
 }
 
-.image-user img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.user-setting h4,
+.user-setting p {
+  margin: 5px;
 }
+
+.container-setting h4,
+.container-setting p {
+  margin: 5px;
+}
+
+.invalid-email {
+  border: 1px solid red;
+}
+
+
+
+
+
+
+
+
 
 
 

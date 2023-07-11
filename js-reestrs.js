@@ -35,10 +35,13 @@ function register() {
   
   localStorage.setItem('registrationData', JSON.stringify(registrationData));
 
-  // Перехід на іншу сторінку
+    // Перехід на іншу сторінку
   // if (phoneNumber && email) {
   //   window.location.href = 'https://volodymyr-kushnir27.github.io/Progekt1_YouTub/index.html';
-   //}
+  //  }
+  if (phoneNumber && email) {
+    window.location.href = "index.html" ;
+   }
 }
 
 // Обмеження введення символів в поле номеру телефону
