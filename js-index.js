@@ -16,7 +16,7 @@ document.getElementById("button-cleener").addEventListener("click", function() {
 
 
 const jsonDataParam = localStorage.getItem('registrationData');
-
+console.log(jsonDataParam)
 
 if (jsonDataParam) {
   // Розпакування JSON-рядка в об'єкт
@@ -31,12 +31,13 @@ if (jsonDataParam) {
   // Встановлення значень полів на сторінці
   const nameElement = document.getElementById('Name-user');
   nameElement.innerText = `${firstName} ${lastName}`;
-
-
+  
 
   // Зміна стилю на видимий
   const userElement = document.querySelector('.user');
   userElement.style.display = 'block';
+  const userReestr = document.querySelector('.reestr')
+  userReestr.style.display = 'none' ;
 }
 
 // Отримуємо посилання на елементи DOM

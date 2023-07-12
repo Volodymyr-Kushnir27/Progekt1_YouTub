@@ -3,7 +3,9 @@
 document.getElementById('top-menu-user-btn').addEventListener('click', function() {
   var menu = document.getElementById('top-menu-user');
   menu.classList.toggle('visible');
+
 });
+
 //-----Cleen storage ---//
 document.getElementById("button-cleener").addEventListener("click", function() {
   // Очищення локального сховища
@@ -16,7 +18,7 @@ document.getElementById("button-cleener").addEventListener("click", function() {
 
 
 const jsonDataParam = localStorage.getItem('registrationData');
-
+console.log(jsonDataParam)
 if (jsonDataParam) {
 
 const registrationData = JSON.parse(jsonDataParam);
@@ -25,6 +27,16 @@ const firstName = registrationData.firstName;
 const lastName = registrationData.lastName;
 const fphoneNumber = registrationData.phoneNumber;
 const email = registrationData.email
+
+  // Встановлення значень полів на сторінці
+  const nameElement = document.getElementById('Name-user');
+  nameElement.innerText = `${firstName} ${lastName}`;
+
+  // Зміна стилю на видимий
+  const userElement = document.querySelector('.user');
+  userElement.style.display = 'block';
+  const userReestr = document.querySelector('.reestr')
+  userReestr.style.display = 'none' ;
 
 const nameUser = document.getElementById('name');
 nameUser.innerText = `${firstName}`;
@@ -35,7 +47,110 @@ phoneUser.innerText = `${fphoneNumber}`;
 const emailsUser = document.getElementById('emails');
 emailsUser.innerText = `${email}`; };
 
+
+
+
 //---- New setting ----//
+
+// // Отримати елементи з DOM
+// const nameUser = document.getElementById('name');
+// const surnameUser = document.getElementById('surname');
+// const phoneUser = document.getElementById('phone');
+// const emailsUser = document.getElementById('emails');
+// const settingButton = document.getElementById('setting-button');
+// const zminaText = document.getElementById('zmina');
+
+// // Функція, яка змінює відображення на сторінці
+// function updateDisplay(registrationData, staticFields) {
+//   if (staticFields) {
+//     nameUser.innerHTML = registrationData.firstName;
+//     surnameUser.innerHTML = registrationData.lastName;
+//     phoneUser.innerHTML = registrationData.phoneNumber;
+//     emailsUser.innerHTML = registrationData.email;
+//   } else {
+//     nameUser.innerHTML = `<input type="text" id="name-input" value="${registrationData.firstName}">`;
+//     surnameUser.innerHTML = `<input type="text" id="surname-input" value="${registrationData.lastName}">`;
+//     phoneUser.innerHTML = `<input type="text" id="phone-input" value="${registrationData.phoneNumber}" oninput="validatePhoneInput(this)">`;
+//     emailsUser.innerHTML = `<input type="text" id="emails-input" value="${registrationData.email}">`;
+//   }
+// }
+
+// // Функція, яка оновлює дані з localStorage
+// function updateData() {
+//   const jsonDataParam = localStorage.getItem('registrationData');
+//   if (jsonDataParam) {
+//     const registrationData = JSON.parse(jsonDataParam);
+//     updateDisplay(registrationData, false);
+//   }
+// }
+
+// // Функція, яка зберігає зміни в localStorage
+// function saveChanges() {
+//   const firstNameInput = document.getElementById('name-input').value;
+//   const lastNameInput = document.getElementById('surname-input').value;
+//   const phoneNumberInput = document.getElementById('phone-input').value;
+//   const emailInput = document.getElementById('emails-input').value;
+
+//   const updatedData = {
+//     firstName: firstNameInput,
+//     lastName: lastNameInput,
+//     phoneNumber: phoneNumberInput,
+//     email: emailInput
+//   };
+
+//   // Перевірка формату електронної пошти
+//   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   if (emailInput !== '' && !regex.test(emailInput)) {
+//     document.getElementById('emails-input').value = '';
+//     emailsUser.classList.add('invalid-email');
+//     return;
+//   }
+
+//   localStorage.setItem('registrationData', JSON.stringify(updatedData));
+
+//   // Оновити відображення на сторінці
+//   updateData();
+
+//   if (fieldsVisible) {
+//     // Закриття полів та оновлення тексту кнопки
+//     fieldsVisible = false;
+//     zminaText.innerText = 'Змінити дані';
+
+//     // Оновлення сторінки
+//     location.reload();
+//   } else {
+//     // Відкриття полів
+//     fieldsVisible = true;
+//     zminaText.innerText = 'Зберегти зміни';
+//   }
+// }
+
+// // Змінна, що відстежує стан відображення полів
+// let fieldsVisible = false;
+
+// // Функція для перевірки формату номеру телефону
+// function validatePhoneInput(input) {
+//   const phoneRegex = /^\d{0,10}$/;
+//   input.value = input.value.replace(/\D/g, '').slice(0, 10); // Видаляємо всі символи, що не є цифрами та обмежуємо до 10 символів
+//   if (!phoneRegex.test(input.value)) {
+//     phoneUser.classList.add('invalid-phone');
+//   } else {
+//     phoneUser.classList.remove('invalid-phone');
+//   }
+// }
+
+// // Обробка кліку на кнопку
+// settingButton.addEventListener('click', function() {
+//   if (fieldsVisible) {
+//     // Закриття полів та збереження змін
+//     saveChanges();
+//   } else {
+//     // Відкриття полів
+//     updateData();
+//     fieldsVisible = true;
+//     zminaText.innerText = 'Зберегти зміни';
+//   }
+// });
 
 // Отримати елементи з DOM
 const nameUser = document.getElementById('name');
@@ -43,19 +158,29 @@ const surnameUser = document.getElementById('surname');
 const phoneUser = document.getElementById('phone');
 const emailsUser = document.getElementById('emails');
 const settingButton = document.getElementById('setting-button');
+const zminaText = document.getElementById('zmina');
 
 // Функція, яка змінює відображення на сторінці
 function updateDisplay(registrationData, staticFields) {
   if (staticFields) {
-    nameUser.innerHTML = `<span id="name-span">${registrationData.firstName}</span>`;
-    surnameUser.innerHTML = `<span id="surname-span">${registrationData.lastName}</span>`;
-    phoneUser.innerHTML = `<span id="phone-span">${registrationData.phoneNumber}</span>`;
-    emailsUser.innerHTML = `<span id="emails-span">${registrationData.email}</span>`;
+    nameUser.innerHTML = registrationData.firstName;
+    surnameUser.innerHTML = registrationData.lastName;
+    phoneUser.innerHTML = registrationData.phoneNumber;
+    emailsUser.innerHTML = registrationData.email;
   } else {
     nameUser.innerHTML = `<input type="text" id="name-input" value="${registrationData.firstName}">`;
     surnameUser.innerHTML = `<input type="text" id="surname-input" value="${registrationData.lastName}">`;
-    phoneUser.innerHTML = `<input type="text" id="phone-input" value="${registrationData.phoneNumber}">`;
+    phoneUser.innerHTML = `<input type="text" id="phone-input" value="${registrationData.phoneNumber}" oninput="validatePhoneInput(this)">`;
     emailsUser.innerHTML = `<input type="text" id="emails-input" value="${registrationData.email}">`;
+  }
+}
+
+// Функція, яка оновлює дані з localStorage
+function updateData() {
+  const jsonDataParam = localStorage.getItem('registrationData');
+  if (jsonDataParam) {
+    const registrationData = JSON.parse(jsonDataParam);
+    updateDisplay(registrationData, false);
   }
 }
 
@@ -76,7 +201,16 @@ function saveChanges() {
   // Перевірка формату електронної пошти
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (emailInput !== '' && !regex.test(emailInput)) {
+    document.getElementById('emails-input').value = '';
     emailsUser.classList.add('invalid-email');
+    return;
+  }
+
+  // Перевірка формату номеру телефону
+  const phoneRegex = /^\d{10}$/;
+  if (!phoneRegex.test(phoneNumberInput)) {
+    document.getElementById('phone-input').value = '';
+    phoneUser.classList.add('invalid-phone');
     return;
   }
 
@@ -84,55 +218,63 @@ function saveChanges() {
 
   // Оновити відображення на сторінці
   updateData();
-}
 
-// Функція, яка оновлює відображення даних
-function updateData() {
-  const jsonDataParam = localStorage.getItem('registrationData');
-  if (jsonDataParam) {
-    const registrationData = JSON.parse(jsonDataParam);
-    updateDisplay(registrationData, false);
+  if (fieldsVisible) {
+    // Закриття полів та оновлення тексту кнопки
+    fieldsVisible = false;
+    zminaText.innerText = 'Змінити дані';
+
+    // Оновлення сторінки
+    location.reload();
+  } else {
+    // Відкриття полів
+    fieldsVisible = true;
+    zminaText.innerText = 'Зберегти зміни';
   }
 }
 
 // Змінна, що відстежує стан відображення полів
 let fieldsVisible = false;
 
+// Функція для перевірки формату номеру телефону
+function validatePhoneInput(input) {
+  const phoneRegex = /^\d{0,10}$/;
+  input.value = input.value.replace(/\D/g, '').slice(0, 10); // Видаляємо всі символи, що не є цифрами та обмежуємо до 10 символів
+  if (!phoneRegex.test(input.value)) {
+    phoneUser.classList.add('invalid-phone');
+  } else {
+    phoneUser.classList.remove('invalid-phone');
+  }
+}
+
 // Обробка кліку на кнопку
 settingButton.addEventListener('click', function() {
   if (fieldsVisible) {
     // Закриття полів та збереження змін
     saveChanges();
-    fieldsVisible = false;
-    settingButton.innerText = 'Змінити дані';
   } else {
     // Відкриття полів
     updateData();
     fieldsVisible = true;
-    settingButton.innerText = 'Зберегти зміни';
-  }
-});
-
-// Перевірка формату номеру телефону
-phoneUser.addEventListener('input', function(e) {
-  const input = e.target.value;
-  e.target.value = input.replace(/\D/g, '').slice(0, 10);
-});
-
-// Перевірка формату електронної пошти
-emailsUser.addEventListener('input', function(e) {
-  const input = e.target.value;
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!regex.test(input)) {
-    e.target.classList.add('invalid-email');
-  } else {
-    e.target.classList.remove('invalid-email');
+    zminaText.innerText = 'Зберегти зміни';
   }
 });
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+// ...
 
 
 
