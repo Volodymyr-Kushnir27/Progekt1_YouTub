@@ -70,3 +70,45 @@ if (localStorage.getItem("userPhoto")) {
 }
 
 
+////--- History ----//
+
+const videos = document.querySelectorAll("#main_content .video");
+let history = JSON.parse(localStorage.getItem("viewHistory")) || [];
+
+videos.forEach(function(video) {
+  const videoElement = video.querySelector("video");
+
+  videoElement.addEventListener("play", function() {
+    const videoId = video.id;
+    const videoContent = video.outerHTML; // Отримати HTML-код всього вмісту <div class="video">
+  
+    
+    const viewData = {
+      id: videoId,
+      content: videoContent
+    };
+  
+    
+    if (!history.find(e => e.id === viewData.id)) {
+      history.unshift(viewData);
+    }
+    
+
+
+    localStorage.setItem("viewHistory", JSON.stringify(history));
+  
+
+
+
+    console.log("Updated View History:", history);
+  });
+});
+
+console.log("Initial View History:", history);
+
+
+
+
+
+
+

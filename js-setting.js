@@ -52,106 +52,6 @@ emailsUser.innerText = `${email}`; };
 
 //---- New setting ----//
 
-// // Отримати елементи з DOM
-// const nameUser = document.getElementById('name');
-// const surnameUser = document.getElementById('surname');
-// const phoneUser = document.getElementById('phone');
-// const emailsUser = document.getElementById('emails');
-// const settingButton = document.getElementById('setting-button');
-// const zminaText = document.getElementById('zmina');
-
-// // Функція, яка змінює відображення на сторінці
-// function updateDisplay(registrationData, staticFields) {
-//   if (staticFields) {
-//     nameUser.innerHTML = registrationData.firstName;
-//     surnameUser.innerHTML = registrationData.lastName;
-//     phoneUser.innerHTML = registrationData.phoneNumber;
-//     emailsUser.innerHTML = registrationData.email;
-//   } else {
-//     nameUser.innerHTML = `<input type="text" id="name-input" value="${registrationData.firstName}">`;
-//     surnameUser.innerHTML = `<input type="text" id="surname-input" value="${registrationData.lastName}">`;
-//     phoneUser.innerHTML = `<input type="text" id="phone-input" value="${registrationData.phoneNumber}" oninput="validatePhoneInput(this)">`;
-//     emailsUser.innerHTML = `<input type="text" id="emails-input" value="${registrationData.email}">`;
-//   }
-// }
-
-// // Функція, яка оновлює дані з localStorage
-// function updateData() {
-//   const jsonDataParam = localStorage.getItem('registrationData');
-//   if (jsonDataParam) {
-//     const registrationData = JSON.parse(jsonDataParam);
-//     updateDisplay(registrationData, false);
-//   }
-// }
-
-// // Функція, яка зберігає зміни в localStorage
-// function saveChanges() {
-//   const firstNameInput = document.getElementById('name-input').value;
-//   const lastNameInput = document.getElementById('surname-input').value;
-//   const phoneNumberInput = document.getElementById('phone-input').value;
-//   const emailInput = document.getElementById('emails-input').value;
-
-//   const updatedData = {
-//     firstName: firstNameInput,
-//     lastName: lastNameInput,
-//     phoneNumber: phoneNumberInput,
-//     email: emailInput
-//   };
-
-//   // Перевірка формату електронної пошти
-//   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//   if (emailInput !== '' && !regex.test(emailInput)) {
-//     document.getElementById('emails-input').value = '';
-//     emailsUser.classList.add('invalid-email');
-//     return;
-//   }
-
-//   localStorage.setItem('registrationData', JSON.stringify(updatedData));
-
-//   // Оновити відображення на сторінці
-//   updateData();
-
-//   if (fieldsVisible) {
-//     // Закриття полів та оновлення тексту кнопки
-//     fieldsVisible = false;
-//     zminaText.innerText = 'Змінити дані';
-
-//     // Оновлення сторінки
-//     location.reload();
-//   } else {
-//     // Відкриття полів
-//     fieldsVisible = true;
-//     zminaText.innerText = 'Зберегти зміни';
-//   }
-// }
-
-// // Змінна, що відстежує стан відображення полів
-// let fieldsVisible = false;
-
-// // Функція для перевірки формату номеру телефону
-// function validatePhoneInput(input) {
-//   const phoneRegex = /^\d{0,10}$/;
-//   input.value = input.value.replace(/\D/g, '').slice(0, 10); // Видаляємо всі символи, що не є цифрами та обмежуємо до 10 символів
-//   if (!phoneRegex.test(input.value)) {
-//     phoneUser.classList.add('invalid-phone');
-//   } else {
-//     phoneUser.classList.remove('invalid-phone');
-//   }
-// }
-
-// // Обробка кліку на кнопку
-// settingButton.addEventListener('click', function() {
-//   if (fieldsVisible) {
-//     // Закриття полів та збереження змін
-//     saveChanges();
-//   } else {
-//     // Відкриття полів
-//     updateData();
-//     fieldsVisible = true;
-//     zminaText.innerText = 'Зберегти зміни';
-//   }
-// });
-
 // Отримати елементи з DOM
 const nameUser = document.getElementById('name');
 const surnameUser = document.getElementById('surname');
@@ -274,6 +174,7 @@ settingButton.addEventListener('click', function() {
 
 
 
+
 // ...
 
 
@@ -355,5 +256,37 @@ if (localStorage.getItem("userPhoto")) {
 
 // Додати обробник події на кнопку завантаження
 uploadButton.addEventListener("click", uploadPhoto);
-  
+
+
+
+///////----- History ------////////
+
+
+
+
+function displayHistory(history) {
+  const historyDiv = document.querySelector(".history");
+
+  historyDiv.innerHTML = "";
+
+  history.forEach(function(viewData) {
+    const videoContent = viewData.content;
+
+    const videoDiv = document.createElement("div");
+    videoDiv.className = "video";
+    videoDiv.innerHTML = videoContent;
+
+    historyDiv.appendChild(videoDiv);
+  });
+}
+
+displayHistory(JSON.parse(localStorage.getItem("viewHistory")) || []);
+
+// Додайте обробник події колеса миші для прокрутки
+const historyDiv = document.querySelector(".history");
+historyDiv.addEventListener("wheel", function(event) {
+  event.preventDefault();
+  historyDiv.scrollLeft += event.deltaY;
+});
+
 
