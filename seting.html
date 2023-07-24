@@ -1,146 +1,158 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>YouTube-Clon</title>
-    <link rel="stylesheet" href="styl.css" />
-    <link rel="stylesheet" href="styl-setting.css">
-  </head>
-
-  <body>
-    <!-- /* ШАПКА ПРОФІЛЮ */ -->
-    <header class="site-header">
-      <div class="log" id="log1">
-        <a href="https://www.youtube.com/">
-          <img src="foto/yuo1.png" alt="Головна сторінка" />
-        </a>
-        <a href="https://www.youtube.com/">
-          <h3>YouTube</h3>
-        </a>
-      </div>
-
-      <div class="search-bar">
-        <input type="text" placeholder="Пошук" />
-        <button type="submit">Знайти</button>
-      </div>
-
-      <div class="site-user">
-        <div id="user-btn-block">
-          <div id="top-menu-user-btn" class="top-menu__btn display-flex">
-            <img
-              id="fot-usr"
-              src="foto/user.png"
-              alt="Кнопка"
-              class="top-menu__button-image"
-            />
-          </div>
-          <div class="top-menu__list hidden" id="top-menu-user">
-            <div id="Name-user" class="user">
-              <h3></h3>
-            </div>
-            <div class="top-menu__list-item reestr" id="Reestr">
-              <a href="reest.html">
-                <button>
-                  <span> Реєстрація на сайті </span>
-                </button>
-              </a>
-            </div>
-            <div class="top-menu__list-item top-menu__logout">
-              <button>
-                <span> Налаштування облікового запису </span>
-              </button>
-            </div>
-            <div class="top-menu__list-item top-menu__logout delet">
-              <button id="button-cleener">
-                <span> Вийти з облікового запису </span>
-              </button>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- /* SID-BAR */ -->
-
-    <div class="content_container">
-      <div class="sid_grid">
-        <div class="sidebar">
-          <a href="index.html">
-            <button class="image-button">
-              <img src="foto/home.jpeg" alt="Головна сторінка" />
-              <span>Головна сторінка</span>
-            </button>
-          </a>
-        </div>
-
-        <div class="sidebar">
-          <a href="https://www.youtube.com/shorts/sYXrDfCCgSQ">
-            <button class="image-button">
-              <img src="foto/short.png" alt="YouTube Shorts" />
-              <span> YouTube Shorts </span>
-            </button>
-          </a>
-        </div>
-
-        <div class="sidebar">
-          <a href="https://www.youtube.com/feed/subscriptions">
-            <button class="image-button">
-              <img src="foto/subscribe.png" alt="Підписки" />
-              <span>Підписки</span>
-            </button>
-          </a>
-        </div>
-
-        <div class="sidebar">
-          <a href="seting.html">
-            <button class="image-button">
-              <img src="foto/yuo.png" alt="Original" />
-              <span> Історія переглядів  </span>
-            </button>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ////  Налаштування і історія переглядів //// -->
-
-    <div id="main_setting" class="container-setting">
-      <div class="setting">
-      <div>
-        <div class="image-user" id="imag-user">
-          <img id="user-photo" src="foto/Kosmos.jpg" alt="Фото" />
-        </div>  
-        <div class="button-container">
-          <button id="upload-btn">Нове фото</button>
-        </div>
-      </div>
-        <div class="user-setting">
-          <div>
-            <h4>Ім`я :</h4><p id="name"></p>
-          </div>
-          <div>
-            <h4>Фамілія: </h4><p id="surname"></p>
-          </div>
-          <div>
-            <h4> Номер телефону: </h4><p id="phone"></p>
-          </div>
-          <div>
-            <h4>Пошта: </h4><p id="emails"></p>
-          </div>
-          <div>
-            <button id="setting-button"> <p id="zmina"> Змінити данні </p> </button>
-          </div>
-        </div>
-      </div>
-      <div> <h1> Історія переглядів : </h1></div>
-      <div class="history">
-        
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>YouTube-Clon</title>
+      <link rel="stylesheet" href="index.css" />
+      <link rel="stylesheet" href="setting.css">
       
-        
-      </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js-setting.js"></script>
-    
+    </head>
+    <body>
+        <!-- //* ШАПКА ПРОФІЛЮ *// -->
+      <!-- <header class="site-header">
+        <div class="log" id="log1">
+          <a href="https://www.youtube.com/">
+            <img src="photo/yuo1.png" alt="Головна сторінка" />
+          </a>
+          <a href="https://www.youtube.com/">
+            <h3>YouTube</h3>
+          </a>
+        </div>
 
-  </body>
-</html>
+        <div class="search-bar">
+          <input type="text" placeholder="Пошук" />
+          <button type="submit">Знайти</button>
+        </div>
+
+        <div class="site-user">
+          <div id="user-btn-block">
+            <div id="top-menu-user-btn" class="top-menu__btn display-flex">
+              <img
+                id="fot-usr"
+                src="photo/user.png"
+                alt="Кнопка"
+                class="top-menu__button-image"
+              />
+            </div>
+            <div class="top-menu__list hidden" id="top-menu-user">
+              <div id="Name-user" class="user">
+                <h3></h3>
+              </div>
+              <div class="top-menu__list-item reestr" id="Reestr">
+                <a href="reest.html">
+                  <button>
+                    <span> Реєстрація на сайті </span>
+                  </button>
+                </a>
+              </div>
+              <div class="top-menu__list-item top-menu__logout">
+                <button>
+                  <span> Налаштування облікового запису </span>
+                </button>
+              </div>
+              <div class="top-menu__list-item top-menu__logout delet">
+                <button id="button-cleener">
+                  <span> Вийти з облікового запису </span>
+                </button>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      /* SID-BAR */ -->
+
+      <!-- <div class="content_container">
+        <div class="sid_grid">
+          <div class="sidebar">
+            <a href="index.html">
+              <button class="image-button">
+                <img src="photo/home.jpeg" alt="Головна сторінка" />
+                <span>Головна сторінка</span>
+              </button>
+            </a>
+          </div>
+
+          <div class="sidebar">
+            <a href="https://www.youtube.com/shorts/sYXrDfCCgSQ">
+              <button class="image-button">
+                <img src="photo/short.png" alt="YouTube Shorts" />
+                <span> YouTube Shorts </span>
+              </button>
+            </a>
+          </div>
+
+          <div class="sidebar">
+            <a href="https://www.youtube.com/feed/subscriptions">
+              <button class="image-button">
+                <img src="photo/subscribe.png" alt="Підписки" />
+                <span>Підписки</span>
+              </button>
+            </a>
+          </div>
+
+          <div class="sidebar">
+            <a href="seting.html">
+              <button class="image-button">
+                <img src="photo/yuo.png" alt="Original" />
+                <span> Історія переглядів  </span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>  -->
+      
+
+
+      <!-- ////  Налаштування і історія переглядів //// -->
+
+      <div id="headerContainer"></div>
+      <script type="module">
+    
+        import headerTemplate from './header.js';
+  
+        // Вставляємо шаблон шапки у контейнер з ідентифікатором "headerContainer"
+        document.getElementById('headerContainer').innerHTML = headerTemplate;
+      </script>
+      
+      <div id="main_setting" class="container-setting">
+        <div class="setting">
+        <div>
+          <div class="image-user" id="imag-user">
+            <img id="user-photo" src="photo/Kosmos.jpg" alt="Фото" />
+          </div>  
+          <div class="button-container">
+            <button id="upload-btn">Нове фото</button>
+          </div>
+        </div>
+          <div class="user-setting">
+            <div>
+              <h4>Ім`я :</h4><p id="name"></p>
+            </div>
+            <div>
+              <h4>Фамілія: </h4><p id="surname"></p>
+            </div>
+            <div>
+              <h4> Номер телефону: </h4><p id="phone"></p>
+            </div>
+            <div>
+              <h4>Пошта: </h4><p id="emails"></p>
+            </div>
+            <div>
+              <button id="setting-button"> <p id="zmina"> Змінити данні </p> </button>
+            </div>
+          </div>
+        </div>
+        <div> <h1> Історія переглядів : </h1></div>
+        <div class="history">
+          
+        
+          
+        </div>
+    
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="settint.js"></script>
+      
+
+    </body>
+  </html>
