@@ -3,223 +3,181 @@
   <head>
     <title>YouTube-Clon</title>
     <link rel="stylesheet" href="index.css" />
-   
   </head>
 
   <body>
-  
-                  <!-- /* ШАПКА ПРОФІЛЮ */ -->
-  <div id="heasers">
-    <header class="site-header">
-        <div class="log" id="log1">
-        
-          <a href="https://www.youtube.com/">
-            <img src="photo/yuo1.png" alt="Головна сторінка" />
-          </a>
-          <a href="https://www.youtube.com/">
-            <h3> YouTube </h3>
-          </a>
-        
+    <div id="headerContainer"></div>
+    <script type="module">
+      import headerTemplate from "./header.js";
+      document.getElementById("headerContainer").innerHTML = headerTemplate;
+    </script>
+
+    <!-- ////  КОНТЕНТ ВІДЕО //// -->
+
+    <div id="main_content" class="container">
+      <div class="video-column">
+        <div class="video" id="video1">
+          <div class="video-wrapper">
+            <video
+              src="video/sims1.mp4"
+              alt="Відео 1"
+              width="640"
+              height="360"
+              controls
+            ></video>
+          </div>
+          <div class="opis">
+            <h3>
+              Страшна таємниця Спрінфілдської Початкової. Сімпсони 22 сезон 21
+              серія Українською 🇺🇦 ❤️
+            </h3>
+            <p>
+              14 051 перегляд 30 квіт. 2023 р. #сімпсони #славаукраїні
+              #українською Привіт друзі, дякую за перегляд. Якщо вам сподобалось
+              відео не забудьте підписатись на канал, а якщо є можливість
+              підтримати канал фінансово, буду дуже радий. Дивитись Сімпсонів в
+              телеграмі:
+            </p>
+          </div>
         </div>
 
-      <div class="search-bar">
+        <div class="video" id="video2">
+          <div class="video-wrapper">
+            <video
+              src="video/video2.mp4"
+              alt="Відео 2"
+              width="640"
+              height="360"
+              controls
+            ></video>
+          </div>
+          <div class="opis">
+            <h3>Love for 3</h3>
+            <p class="opis-text">
+              Hola a todos! Este es la continuación del primer mix Cubano que
+              hice! Disfruten! Hello everybody! This is the sequel to the first
+              Cuban mix I made. Enjoy!
+            </p>
+          </div>
+        </div>
 
-        <input type="text" placeholder="Пошук" />
-        <button type="submit">Знайти</button>
-        
+        <div class="video">
+          <div class="video-wrapper" id="video3">
+            <video
+              src="video/video3.mp4"
+              alt="Відео 3"
+              width="640"
+              height="360"
+              controls
+            ></video>
+          </div>
+          <div class="opis">
+            <h3>Мотивація</h3>
+            <p>Опис відео 3. Сильні мотивуючі слова</p>
+          </div>
+        </div>
       </div>
 
-    
-          <div class="site-user">
-            <div id="user-btn-block">
-              <div id="top-menu-user-btn" class="top-menu__btn display-flex">
-                <img src="photo/user.png" alt="Кнопка" class="top-menu__button-image"  id="fot-usr">
-              </div>
-              <div class="top-menu__list hidden " id="top-menu-user">
-                <div id="Name-user" class="user" >
-              <h3>  </h3>
-                </div>
-                <div class="top-menu__list-item reestr" id="Reestr">
-                  <a href="registration.html">
-                    <button>
-                      <span> Реєстрація на сайті </span>
-                    </button>
-                  </a>
-                </div>
-                <div class="top-menu__list-item top-menu__logout">
-                  <a href="seting.html" >
-                  <button>
-                    <span> Налаштування облікового запису </span>
-                  </button>
-                  </a>
-                </div>
-                <div class="top-menu__list-item top-menu__logout delet">
-                  <button id="button-cleener">
-                    <span> Вийти з облікового запису </span>
-                  </button>
-                </div>
-                
-              </div>
-            </div>
+      <div class="video-column">
+        <div class="video" id="video4">
+          <div class="video-wrapper">
+            <video
+              src="video/video4.mp4"
+              alt="Відео 4"
+              width="640"
+              height="360"
+              controls
+            ></video>
           </div>
-
-
-      
-
-    </header>
-
-                            <!-- /* SID-BAR */ -->
-
-    <div class="content_container">
-     
-      <div class="sid_grid">
-        
-        <div class="sidebar">
-          <a href="index.html">
-            <button class="image-button">
-              <img src="photo/home.jpeg" alt="Головна сторінка" />
-              <span>Головна сторінка</span>
-            </button>
-          </a>
-        </div>
-        
-        <div class="sidebar">
-          <a href="https://www.youtube.com/shorts/sYXrDfCCgSQ">
-            <button class="image-button">
-              <img src="photo/short.png" alt="YouTube Shorts" />
-              <span> YouTube Shorts </span>
-            </button>
-          </a>
+          <div class="opis">
+            <h3>Хвилина медитації на берегу моря ....</h3>
+            <p>Картини неба , хмар , моря</p>
+          </div>
         </div>
 
-        <div class="sidebar">
-          <a href="https://www.youtube.com/feed/subscriptions">
-            <button class="image-button">
-              <img src="photo/subscribe.png" alt="Підписки" />
-              <span>Підписки</span>
-            </button>
-          </a>
-        </div>
-    
-        <div class="sidebar">
-          <a href="seting.html">
-            <button class="image-button">
-              <img src="photo/yuo.png" alt="Original" />
-              <span> Історія переглядів </span>
-            </button>
-          </a>
+        <div class="video" id="video5">
+          <div class="video-wrapper">
+            <video
+              src="video/video5.mp4"
+              alt="Відео 5"
+              width="640"
+              height="360"
+              controls
+            ></video>
+          </div>
+          <div class="opis">
+            <h3>Хвилинка медитації</h3>
+            <p>Безкрайнє небо</p>
+          </div>
         </div>
 
+        <div class="video" id="video6">
+          <div class="video-wrapper">
+            <video
+              src="video/video6.mp4"
+              alt="Відео 6"
+              width="640"
+              height="360"
+              controls
+            ></video>
+          </div>
+          <div class="opis">
+            <h3>Гурт Тік</h3>
+            <p>Москалі всі підарасти</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-column">
+        <div class="video" id="video7">
+          <div class="video-wrapper">
+            <video
+              src="video/video7.mp4"
+              alt="Відео 7"
+              width="640"
+              height="360"
+              controls
+            ></video>
+          </div>
+          <div class="opis">
+            <h3>Іво Бобул</h3>
+            <p>Я приходжу я іду до тебе знову......</p>
+          </div>
+        </div>
+
+        <div class="video" id="video8">
+          <div class="video-wrapper">
+            <video
+              src="video/video8.mp4"
+              alt="Відео 8"
+              width="640"
+              height="360"
+              controls
+            ></video>
+          </div>
+          <div class="opis">
+            <h3>Джунглі</h3>
+            <p>Картини джунглів під музику</p>
+          </div>
+        </div>
+
+        <div class="video" id="video9">
+          <div class="video-wrapper">
+            <video
+              src="video/video9.mp4"
+              alt="Відео 9"
+              width="640"
+              height="360"
+              controls
+            ></video>
+          </div>
+          <div class="opis">
+            <h3>Не в тому річ</h3>
+            <p>Де ти гулЯла цілу ніч ска ?</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-                 <!-- ////  КОНТЕНТ ВІДЕО //// -->
-
-                
-      <div id="main_content" class="container">
-        <div class="video-column">
-          <div class="video" id="video1">
-            <div class="video-wrapper">
-              <video  src="video/sims1.mp4" alt="Відео 1"  width="640" height="360" controls></video>
-            </div>
-              <div class="opis">
-                <h3> Страшна таємниця Спрінфілдської Початкової. Сімпсони 22 сезон 21 серія Українською 🇺🇦 ❤️</h3>
-                <p>14 051 перегляд  30 квіт. 2023 р.  #сімпсони #славаукраїні #українською
-                  Привіт друзі, дякую за перегляд. Якщо вам сподобалось відео  не забудьте підписатись на канал, а якщо є можливість підтримати канал фінансово, буду дуже радий.
-                  
-                  Дивитись Сімпсонів в телеграмі:
-                </p>
-              </div>
-          </div>
-      
-          <div class="video"  id="video2">
-            <div class="video-wrapper">
-              <video src="video/video2.mp4" alt="Відео 2"  width="640" height="360" controls></video>
-            </div>
-            <div class="opis">
-                <h3> Love for 3  </h3>
-                <p class="opis-text"> Hola a todos! Este es la continuación del primer mix Cubano que hice! Disfruten!
-                  Hello everybody! This is the sequel to the first Cuban mix I made. Enjoy! </p>
-            </div>
-          </div>
-      
-          <div class="video">
-            <div class="video-wrapper" id="video3">
-              <video  src="video/video3.mp4" alt="Відео 3"  width="640" height="360" controls></video>
-            </div>
-            <div class="opis">
-                <h3> Мотивація </h3>
-                <p>Опис відео 3. Сильні мотивуючі слова </p>
-            </div>
-          </div>
-        </div>
-      
-        <div class="video-column">
-          <div class="video" id="video4">
-            <div class="video-wrapper">
-               <video  src="video/video4.mp4" alt="Відео 4"  width="640" height="360" controls></video>
-            </div>
-            <div class="opis">
-                <h3> Хвилина медитації на берегу моря .... </h3>
-                <p>Картини неба , хмар , моря</p>
-             </div>
-          </div>
-      
-          <div class="video" id="video5">
-            <div class="video-wrapper">
-              <video  src="video/video5.mp4" alt="Відео 5"  width="640" height="360" controls></video>
-            </div>
-            <div class="opis">
-                <h3> Хвилинка медитації  </h3>
-                <p> Безкрайнє небо </p>
-            </div>
-          </div>
-      
-          <div class="video" id="video6">
-            <div class="video-wrapper" >
-              <video  src="video/video6.mp4" alt="Відео 6" width="640" height="360" controls></video>
-            </div>
-            <div class="opis">
-                <h3>Гурт Тік </h3>
-                <p>Москалі всі підарасти</p>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="video-column">
-          <div class="video" id="video7">
-            <div class="video-wrapper">
-              <video  src="video/video7.mp4" alt="Відео 7"  width="640" height="360" controls></video>
-            </div>
-            <div class="opis">
-               <h3> Іво Бобул </h3>
-                <p> Я приходжу я іду до тебе знову......</p>
-            </div>
-          </div>
-      
-          <div class="video" id="video8">
-            <div class="video-wrapper">
-              <video  src="video/video8.mp4" alt="Відео 8"  width="640" height="360" controls></video>
-            </div>
-            <div class="opis">
-                <h3> Джунглі</h3>
-                <p>Картини джунглів під музику</p>
-            </div>
-          </div>
-      
-          <div class="video" id="video9">
-            <div class="video-wrapper">
-              <video  src="video/video9.mp4" alt="Відео 9" width="640" height="360" controls></video>
-            </div>
-            <div class="opis">
-               <h3>Не в тому річ</h3>
-               <p> Де ти гулЯла цілу ніч ска ?</p>
-            </div>
-          </div>
-        </div>
-
-      </div> 
-      <script src="index.js"></script>
-  </body>  
+    <script src="index.js"></script>
+  </body>
 </html>

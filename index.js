@@ -1,4 +1,4 @@
-
+window.onload = function () {
 // - user comand window - //
 document.getElementById('top-menu-user-btn').addEventListener('click', function() {
     var menu = document.getElementById('top-menu-user');
@@ -108,7 +108,7 @@ videos.forEach(function(video) {
 console.log("Initial View History:", history);
 
 
-
+};
 
 
 
