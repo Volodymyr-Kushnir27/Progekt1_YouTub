@@ -1,3 +1,4 @@
+window.onload = function () {
 
 // - user comand window - //
 document.getElementById('top-menu-user-btn').addEventListener('click', function() {
@@ -291,5 +292,5 @@ historyDiv.addEventListener("wheel", function(event) {
 
 
 
-
+};
 
