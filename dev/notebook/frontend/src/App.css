@@ -1,0 +1,296 @@
+/* --- Основні стилі --- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+/* --- Хедер --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.header h2 {
+  margin: 0;
+  color: #1f3c88;
+}
+
+.header-buttons button {
+  margin-left: 10px;
+}
+
+
+
+/* --- Кнопки --- */
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin: 10px 5px ;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  border: 1px solid #1f3c88;
+  background-color: #1f3c88;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #163273;
+  box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+.btn.red {
+  background-color: #e63946;
+  border: 1px solid #c62836;
+}
+
+.btn.red:hover {
+  background-color: #b71c1c;
+}
+
+.btn.small {
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+/* --- Кнопки видалення (хрестики) --- */
+.btn.small.red {
+  background-color: #e63946;
+  border: 1px solid #c62836;
+  color: #fff;
+}
+
+.btn.small.red:hover {
+  background-color: #b71c1c;
+}
+
+/* --- Форми та інпути --- */
+/* --- Форми та інпути --- */
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 2px solid #ccc;
+  outline: none;
+  width: auto;          /* ширина під текст */
+  min-width: 120px;     /* мінімальна ширина */
+  max-width: 100%;      /* не виходити за контейнер */
+  font-size: 16px;
+  box-sizing: content-box; /* ширина враховує вміст */
+  overflow-x: auto;     /* прокрутка якщо текст занадто довгий */
+}
+
+
+/* --- Контролі --- */
+.controls label,
+.financials label {
+  display: inline-block;
+  margin-right: 35px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.controls input,
+table input {
+  font-size: 16px;
+  padding: 6px 10px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+}
+
+/* --- Інпути таблиці --- */
+table input[type="text"],
+table input[type="number"] {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box; /* важливо для правильного розміщення */
+}
+
+
+/* --- Попередній день --- */
+.prev-day-balance {
+  margin: 15px 5px;
+}
+
+.yellow-label {
+  font-weight: 600;
+  color: #f4a261;
+  padding-right: 10px ;
+}
+
+.currency {
+  margin-left: 5px;
+}
+
+/* --- Таблиця --- */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* дозволяє прокрутку на малих екранах */
+}
+
+table th,
+table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  white-space: nowrap;
+}
+
+table th {
+  background-color: #f0f3f8;
+  color: #333;
+}
+
+table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* --- Задачі та тестери --- */
+.tasks, .tester-writeoff {
+  margin-bottom: 25px;
+  background-color: #f7f8fa;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.tasks h3, .tester-writeoff h3 {
+  margin-bottom: 12px;
+  color: #1f3c88;
+}
+
+.tasks ul, .tester-writeoff ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tasks li, .tester-writeoff li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+
+/* --- Задачі на день --- */
+.tasks li input[type="text"] {
+  flex: 1;
+  font-size: 16px;
+  padding: 8px 12px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  min-height: 40px;
+  word-wrap: break-word;
+  width: 100%;
+  max-width: none;
+}
+
+/* --- Тестерів --- */
+.tester-writeoff li input[type="text"],
+.tester-writeoff li input[type="number"] {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  width: 180px;
+}
+
+/* --- Фінанси --- */
+
+.financials input[type="number"] {
+  margin: 2px 2px 2px 2px; /* відступ між інпутом і "грн." */
+  width: 50%;
+}
+
+.financials span {
+  white-space: nowrap; /* не переносити "грн." на новий рядок */
+}
+
+
+/* --- Адаптивність --- */
+@media (max-width: 500px) {
+  .container {
+    padding: 15px;
+  }
+
+  .btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"] {
+    max-width: 100%;
+    font-size: 15px;
+  }
+
+  .summary {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  table th, table td {
+    padding: 8px;
+  }
+  .prev-day-balance {
+  margin: 10px 0;
+  width: 80%;
+}
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 10px;
+  }
+
+  .btn {
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"] {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  table th, table td {
+    padding: 6px;
+    font-size: 14px;
+  }
+  .prev-day-balance {
+  margin: 15px 0;
+  width: 80%;
+}
+}
