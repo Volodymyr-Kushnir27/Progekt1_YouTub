@@ -1,0 +1,422 @@
+openapi: 3.1.0
+
+info:
+  title: Perfums Bar Sales Analytics API
+  description: Read-only API for department sales, plans and employee performance.
+  version: 1.2.0
+
+servers:
+  - url: https://perfums-analytics-api.onrender.com
+    description: Production API on Render
+
+paths:
+  /api/meta:
+    get:
+      operationId: getDatabaseMeta
+      summary: Get database row counts and latest available dates
+      responses:
+        "200":
+          description: Database metadata
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /api/departments:
+    get:
+      operationId: listDepartments
+      summary: List or find sales departments
+      parameters:
+        - name: q
+          in: query
+          description: Department name or part of it
+          schema:
+            type: string
+        - name: region
+          in: query
+          description: Region name or part of it
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Departments
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /api/employees:
+    get:
+      operationId: listEmployees
+      summary: List or find employees
+      parameters:
+        - name: q
+          in: query
+          description: Employee name or part of it
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Employee status
+          schema:
+            type: string
+            enum:
+              - active
+              - inactive
+              - needs_review
+        - name: limit
+          in: query
+          description: Maximum number of records
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+            default: 100
+      responses:
+        "200":
+          description: Employees
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /api/sales/daily:
+    get:
+      operationId: getDailyDepartmentSales
+      summary: Get daily sales for departments and regions
+      parameters:
+        - name: from
+          in: query
+          description: Start date in YYYY-MM-DD format
+          schema:
+            type: string
+            format: date
+        - name: to
+          in: query
+          description: End date in YYYY-MM-DD format
+          schema:
+            type: string
+            format: date
+        - name: department
+          in: query
+          description: Department name or part of it
+          schema:
+            type: string
+        - name: region
+          in: query
+          description: Region name or part of it
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of records
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 1000
+            default: 400
+      responses:
+        "200":
+          description: Daily department sales
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /api/plans:
+    get:
+      operationId: getPlanProgress
+      summary: Get minimum or BNAC plan progress
+      parameters:
+        - name: month
+          in: query
+          description: Any date within the requested month in YYYY-MM-DD format
+          schema:
+            type: string
+            format: date
+        - name: plan_type
+          in: query
+          description: Plan type
+          schema:
+            type: string
+            enum:
+              - minimum
+              - bnac
+        - name: object_type
+          in: query
+          description: Type of object for which the plan is calculated
+          schema:
+            type: string
+            enum:
+              - department
+              - region
+        - name: department_id
+          in: query
+          description: Exact numeric department ID
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 2147483647
+        - name: department
+          in: query
+          description: Department name or part of it
+          schema:
+            type: string
+        - name: region
+          in: query
+          description: Region name or part of it
+          schema:
+            type: string
+        - name: latest
+          in: query
+          description: Return only the latest snapshot for each month and plan type
+          schema:
+            type: boolean
+            default: true
+      responses:
+        "200":
+          description: Plan progress
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /api/employees/monthly-performance:
+    get:
+      operationId: getEmployeeMonthlyPerformance
+      summary: Get official or interim monthly employee performance
+      description: >
+        Returns official final rows from employee_monthly_performance when available;
+        otherwise returns interim aggregation from employee_shifts. When
+        plan_missing_shifts is greater than zero, completion_percent is null.
+      parameters:
+        - name: month
+          in: query
+          required: true
+          description: Any date within the requested month
+          schema:
+            type: string
+            format: date
+        - name: employee
+          in: query
+          description: Employee name or part of it
+          schema:
+            type: string
+        - name: department
+          in: query
+          description: Department name or part of it
+          schema:
+            type: string
+        - name: region
+          in: query
+          description: Region name or part of it
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of records
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 500
+            default: 200
+      responses:
+        "200":
+          description: Employee performance
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /api/employees/payroll:
+    get:
+      operationId: getEmployeePayroll
+      summary: Get employee payroll totals and breakdown over a date range
+      description: Payroll totals grouped by employee and department. Sum salary_total_uah when an employee has multiple rows.
+      parameters:
+        - name: from
+          in: query
+          required: true
+          description: Start date in YYYY-MM-DD format
+          schema:
+            type: string
+            format: date
+        - name: to
+          in: query
+          required: true
+          description: End date in YYYY-MM-DD format
+          schema:
+            type: string
+            format: date
+        - name: employee
+          in: query
+          description: Employee name or part of it
+          schema:
+            type: string
+        - name: department
+          in: query
+          description: Department name or part of it
+          schema:
+            type: string
+        - name: region
+          in: query
+          description: Region name or part of it
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of grouped records
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 500
+            default: 200
+      responses:
+        "200":
+          description: Employee payroll grouped by department
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /api/employees/payroll/daily:
+    get:
+      operationId: getEmployeePayrollDaily
+      summary: Get daily employee shifts, sales, plans and payroll when available
+      parameters:
+        - { name: from, in: query, required: true, schema: { type: string, format: date } }
+        - { name: to, in: query, required: true, schema: { type: string, format: date } }
+        - { name: employee, in: query, schema: { type: string } }
+        - { name: department, in: query, schema: { type: string } }
+        - { name: region, in: query, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 1000, default: 400 } }
+      responses:
+        "200": { description: Daily shifts; uses employee_shifts until payroll data becomes available, content: { application/json: { schema: { $ref: "#/components/schemas/ListResponse" } } } }
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /api/employees/statuses:
+    get:
+      operationId: getEmployeeStatuses
+      summary: Get master and expert statuses for a month
+      parameters:
+        - { name: month, in: query, required: true, schema: { type: string, format: date } }
+        - { name: status, in: query, schema: { type: string, enum: [expert, master, seller, needs_review] } }
+        - { name: employee, in: query, schema: { type: string } }
+      responses:
+        "200": { description: Employee statuses, content: { application/json: { schema: { $ref: "#/components/schemas/ListResponse" } } } }
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /api/admin/actions:
+    get:
+      operationId: getAdminActions
+      summary: Get administrator action items for a month
+      parameters:
+        - { name: month, in: query, required: true, schema: { type: string, format: date } }
+        - { name: as_of, in: query, description: Calculate actual and expected results using data available through this date, schema: { type: string, format: date } }
+        - { name: region, in: query, schema: { type: string } }
+      responses:
+        "200": { description: Admin actions, content: { application/json: { schema: { $ref: "#/components/schemas/ListResponse" } } } }
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+  /api/admin/actions/weekly:
+    get:
+      operationId: getAdminActionWeeklyUpdates
+      summary: Get weekly admin action results
+      parameters:
+        - { name: from, in: query, required: true, schema: { type: string, format: date } }
+        - { name: to, in: query, required: true, schema: { type: string, format: date } }
+      responses:
+        "200": { description: Weekly action results, content: { application/json: { schema: { $ref: "#/components/schemas/ListResponse" } } } }
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorized" }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+  schemas:
+    ApiResponse:
+      type: object
+      required:
+        - status
+        - data
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
+
+    ListResponse:
+      type: object
+      required:
+        - status
+        - count
+        - data
+      properties:
+        status:
+          type: string
+        count:
+          type: integer
+        data:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+      additionalProperties: true
+
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+    Unauthorized:
+      description: Missing or invalid bearer token
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+security:
+  - bearerAuth: []

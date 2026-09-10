@@ -1,0 +1,31 @@
+{
+  "name": "perfums-analytics-api",
+  "version": "2.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test",
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "import:dry": "node src/importers/import-main-workbook.js",
+    "import:db": "node src/importers/import-main-workbook-to-db.js",
+    "import:schema": "node src/importers/import-main-workbook-to-db.js --check-schema",
+    "import:all:dry": "node src/importers/prepare-all-workbooks.js",
+    "import:all:db": "node src/importers/prepare-all-workbooks.js && node src/importers/import-main-workbook-to-db.js data/import-all.generated.xlsx --mode monthly --create-missing-references",
+    "import:verify": "node src/importers/verify-import.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "adm-zip": "^0.6.0",
+    "dotenv": "^17.4.2",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "pg": "^8.22.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "type": "module"
+}
